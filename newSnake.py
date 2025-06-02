@@ -46,3 +46,23 @@ class Snake:
 
     def grow(self):
         self.grow_pending = True
+
+    def draw(self, screen):
+        for i, segment in enumerate(self.body):
+            color = (0, 200, 0) if i == 0 else self.color
+            pygame.draw.rect(screen, color, pygame.Rect(segment[0], segment[1], self.block_size, self.block_size))
+
+    def reset(self):
+        self.body = [(self.screen_width // 2, self.screen_height // 2)]
+        self.direction = "RIGHT"
+        self.change_to = self.direction
+        self.grow_pending = False
+
+    def get_head_position(self):
+        return self.body[0]
+
+    def get_body(self):
+        return self.body
+
+    def length(self):
+        return len(self.body)
