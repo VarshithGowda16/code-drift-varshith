@@ -142,3 +142,24 @@ class Food:
         """For example, if special food expires without being eaten"""
         self.type = "normal"
         self.spawn()
+        # Example usage:
+if _name_ == "_main_":
+    pygame.init()
+    screen = pygame.display.set_mode((400, 300))
+    clock = pygame.time.Clock()
+    food = Food(20, 400, 300)
+
+    running = True
+    while running:
+        screen.fill((0, 0, 0))
+        food.update()
+        food.draw(screen)
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        clock.tick(10)
+
+    pygame.quit()
